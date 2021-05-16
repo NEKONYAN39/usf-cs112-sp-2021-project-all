@@ -1,18 +1,9 @@
+import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
-import java.util.Random;
-import javax.swing.*;
-import java.awt.FlowLayout;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
 
-public class Graph extends JPanel {
+public class Graphbak extends JPanel {
 
     private static final long serialVersionUID = 1L;
     private int labelPadding = 40;
@@ -44,13 +35,10 @@ public class Graph extends JPanel {
 
     // TODO: Add a private KNNPredictor variable
     private static KNNPredictor knn;
-
-    public static int jslnum=5;
-    public static int k=5*2+1;
 	/**
 	 * Constructor method
 	 */
-    public Graph(int K, String fileName) {
+    public Graphbak(int K, String fileName) {
 //        // Generate random data point
 //        List<DataPoint> data = new ArrayList<>();
 //        Random random = new Random();
@@ -251,70 +239,27 @@ public class Graph extends JPanel {
     private static void createAndShowGui(int K, String fileName) {
         JPanel panel1;
         panel1 = new JPanel();
-        panel1.setLayout(new FlowLayout());
+        panel1.setLayout(new GridLayout());
         panel1.setSize(400, 40);
         panel1.setBackground(Color.white);
 
 
         /* Main panel */
-        Graph mainPanel = new Graph(K, fileName);
+        Graphbak mainPanel = new Graphbak(K, fileName);
 
         // Feel free to change the size of the panel
         mainPanel.setPreferredSize(new Dimension(700, 600));
 
         /* creating the frame */
         JFrame frame = new JFrame("CS 112 Lab Part 3");
-        frame.setSize(700,600);
         panel1.removeAll();
         JLabel jl = new JLabel("Accuracy: "+accuracy);
         JLabel jl1 = new JLabel("Precision: "+precision);
         panel1.add(jl);
         panel1.add(jl1);
-        frame.add(panel1,BorderLayout.NORTH);
-
-        JPanel jPane2 = new JPanel(new GridLayout(3,1));
-        Label label=new Label("Choose the majority value");
-        JSlider jsl=new JSlider(2,25);
-        jsl.setValue(5);
-        jsl.setMajorTickSpacing(5);
-        jsl.setMinorTickSpacing(1);
-        jsl.setPaintTicks(true);
-        jsl.setSnapToTicks(true);
-        jsl.setPaintLabels(true);
-        jsl.setSize(150,20);
-        jsl.addChangeListener(new ChangeListener(){
-
-            @Override
-            public void stateChanged(ChangeEvent e) {
-                JSlider jsl2 = (JSlider)e.getSource();
-                if (!jsl2.getValueIsAdjusting())
-                    jslnum=jsl2.getValue();
-            }
-
-        });
-
-        JButton button=new JButton();
-        button.setSize(200,25);
-        button.setText("RunTest");
-
-        jPane2.add(label);
-        jPane2.add(jsl);
-        jPane2.add(button);
-        button.addActionListener((e) -> {
-            Graph mainPanel2 = new Graph(jslnum*2+1, fileName);
-            // Feel free to change the size of the panel
-            mainPanel2.setPreferredSize(new Dimension(700, 600));
-            frame.getContentPane().add(mainPanel2,BorderLayout.CENTER);
-            jl.setText("Accuracy: "+accuracy);
-            jl1.setText("Precision: "+precision);
-
-        });
-
-        frame.add(jPane2,BorderLayout.SOUTH);
+        frame.add(panel1);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.getContentPane().add(mainPanel,BorderLayout.CENTER);
-
-        frame.add(jPane2,BorderLayout.SOUTH);
+        frame.getContentPane().add(mainPanel);
         frame.pack();
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);

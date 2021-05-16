@@ -3,7 +3,7 @@ import java.util.ArrayList;
 public class Driver {
     public static void main(String[] args) {
 
-        //4-dimensions
+        //4 points
         KNNPredictor_4 knn = new KNNPredictor_4(20);
         ArrayList<DataPoint1> data=knn.readData();
         for(DataPoint1 d:data){
@@ -13,7 +13,7 @@ public class Driver {
        System.out.println("Precision="+knn.getPrecision());
 
 
-           //2-dimensions
+           //2 points
 
            KNNFrame F=new KNNFrame();
 

@@ -14,7 +14,7 @@ public class Main {
         doSaveDataToFile();
         DummyPredictor dummyPredictor = new DummyPredictor();
         ArrayList<DataPoint> dataPoints1 = new ArrayList<>();
-
+        //获取训练数据集
         dummyPredictor.getAccuracy(dataPoints1);
 
         javax.swing.SwingUtilities.invokeLater(new Runnable() {
@@ -33,7 +33,7 @@ public class Main {
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
-
+                    // 展示训练数据集
                     MyFrame.myPanel1.addAll(dataPoints1);
 
                     try {
@@ -48,7 +48,7 @@ public class Main {
             }
         });
         Thread.sleep(4000);
-
+        // 展示测试数据
         ArrayList<DataPoint> dataPoints2 = new ArrayList<>();
         dummyPredictor.getPrecision(dataPoints2);
         dataPoints2.forEach(v->{
@@ -64,7 +64,7 @@ public class Main {
         });
     }
 
-
+    // 去训练数据最近的点的标签作为测试点的标签
     public static void precision(ArrayList<DataPoint> accuracy, DataPoint test){
         double f1 = test.getF1();
         double f2 = test.getF2();
@@ -81,15 +81,15 @@ public class Main {
         }
     }
 
-
+    // 将数据save入文件
     public static void doSaveDataToFile() throws IOException {
         DataPoint random1 = new DataPoint(1.0, 1.0, "Good", true);
         DataPoint random2 = new DataPoint(2.0, 2.0, "Bad", false);
         File file = new File(saveFile);
-        FileWriter fileWriter = null;
+        FileWriter fileWriter = null; //输出流，用于写入文件
         try {
             if (!file.exists()) {
-
+                // 如果文件不存在，则创建
                 file.createNewFile();
             }
             fileWriter = new FileWriter(file);

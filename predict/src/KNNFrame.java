@@ -21,7 +21,7 @@ public class KNNFrame extends JFrame {
 
         JLabel j0=new JLabel("Please Input Value of K:");
         textField = new JTextField(16);
-        button = new JButton("OK");
+        button = new JButton("ok");
 
         panel1 = new JPanel();
         panel1.setLayout(new BorderLayout());
@@ -58,10 +58,10 @@ public class KNNFrame extends JFrame {
         str = textField.getText();
         if (str.equals("")) {
             Object[] options = {"OK ", "CANCEL "};
-            JOptionPane.showOptionDialog(null, "No text ", "Tip", JOptionPane.DEFAULT_OPTION,
+            JOptionPane.showOptionDialog(null, "no text ", "tip", JOptionPane.DEFAULT_OPTION,
                     JOptionPane.WARNING_MESSAGE, null, options, options[0]);
         } else
-            JOptionPane.showMessageDialog(null, "You set K:" + str);
+            JOptionPane.showMessageDialog(null, "you set K:" + str);
         knn = new KNNPredictor(Integer.parseInt(str));
         Show();
         refreshKNN();

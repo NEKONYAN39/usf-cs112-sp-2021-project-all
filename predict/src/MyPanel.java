@@ -14,8 +14,8 @@ public class MyPanel extends JPanel {
     private static final int START_Y = 450;
     private static final int DElIVER = 40;
 
-    private static final int R = 20;
-    private static final int testR = 13;
+    private static final int R = 20; //画的圆的半径
+    private static final int testR = 13; //画的圆的半径
 
 
     private static final int[][] line = {
@@ -41,7 +41,7 @@ public class MyPanel extends JPanel {
                 } else {
                     g2d.setColor(Color.cyan);
                 }
-
+                // 区分点是否测试数据还是训练数据，训练数据大小是20，测试数据是13
                 if(v.getTest()){
                     rr = testR;
                 }else {
